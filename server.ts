@@ -1,5 +1,5 @@
-import { createRequestHandler } from "react-router";
 import { getLoadContext } from "load-context.js";
+import { createRequestHandler } from "react-router";
 
 const handleRequest = createRequestHandler(() =>
   import.meta.hot

@@ -9,6 +9,6 @@
   "observability": {
     "enabled": true
   },
- "placement": { "mode": "smart" },
+  "placement": { "mode": "smart" },
   "vars": { "API_URL": "https://api.example.com" }
 }
