@@ -1,14 +1,14 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "cfv7",
-  "compatibility_date": "2024-11-01",
-  "main": "./server.ts",
-  "assets": {
-    "directory": "./dist/client"
-  },
-  "observability": {
-    "enabled": true
-  },
-  "placement": { "mode": "smart" },
-  "vars": { "API_URL": "https://api.example.com" }
+ "$schema": "node_modules/wrangler/config-schema.json",
+ "name": "cfv7",
+ "compatibility_date": "2024-11-01",
+ "main": "./server.ts",
+ "assets": {
+  "directory": "./dist/client"
+ },
+ "observability": {
+  "enabled": true
+ },
+ "placement": { "mode": "smart" },
+ "vars": { "API_URL": "https://api.example.com" }
 }

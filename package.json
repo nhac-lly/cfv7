@@ -1,52 +1,52 @@
 {
-  "name": "react-router-starter-template",
-  "description": "Build a full-stack web application with React Router 7.",
-  "cloudflare": {
-    "label": "React Router Framework Starter",
-    "products": ["Workers"],
-    "categories": ["storage"],
-    "icon_urls": [
-      "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
-    ],
-    "preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/bfdc2f85-e5c9-4c92-128b-3a6711249800/public"
-  },
-  "dependencies": {
-    "@react-router/fs-routes": "latest",
-    "@react-router/serve": "latest",
-    "isbot": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-router": "latest"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "latest",
-    "@cloudflare/vite-plugin": "latest",
-    "@cloudflare/workers-types": "latest",
-    "@react-router/dev": "latest",
-    "@tailwindcss/postcss": "latest",
-    "@tailwindcss/vite": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "autoprefixer": "latest",
-    "postcss": "latest",
-    "react-router-dom": "latest",
-    "tailwindcss": "latest",
-    "typescript": "latest",
-    "vite": "latest",
-    "vite-tsconfig-paths": "latest",
-    "wrangler": "latest"
-  },
-  "private": true,
-  "scripts": {
-    "build": "react-router build",
-    "cf-typegen": "wrangler types",
-    "deploy": "react-router build && wrangler deploy",
-    "dev": "react-router dev",
-    "preview": "react-router build && wrangler dev",
-    "start": "wrangler dev",
-    "typecheck": "wrangler types && react-router typegen && tsc",
-    "typegen": "wrangler types && react-router typegen"
-  },
-  "type": "module"
+ "name": "react-router-starter-template",
+ "description": "Build a full-stack web application with React Router 7.",
+ "cloudflare": {
+  "label": "React Router Framework Starter",
+  "products": ["Workers"],
+  "categories": ["storage"],
+  "icon_urls": [
+   "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+  ],
+  "preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/bfdc2f85-e5c9-4c92-128b-3a6711249800/public"
+ },
+ "dependencies": {
+  "@react-router/fs-routes": "latest",
+  "@react-router/serve": "latest",
+  "isbot": "latest",
+  "react": "latest",
+  "react-dom": "latest",
+  "react-router": "latest"
+ },
+ "devDependencies": {
+  "@biomejs/biome": "latest",
+  "@cloudflare/vite-plugin": "latest",
+  "@cloudflare/workers-types": "latest",
+  "@react-router/dev": "latest",
+  "@tailwindcss/postcss": "latest",
+  "@tailwindcss/vite": "latest",
+  "@types/node": "latest",
+  "@types/react": "latest",
+  "@types/react-dom": "latest",
+  "autoprefixer": "latest",
+  "postcss": "latest",
+  "react-router-dom": "latest",
+  "tailwindcss": "latest",
+  "typescript": "latest",
+  "vite": "latest",
+  "vite-tsconfig-paths": "latest",
+  "wrangler": "latest"
+ },
+ "private": true,
+ "scripts": {
+  "build": "react-router build",
+  "cf-typegen": "wrangler types",
+  "deploy": "react-router build && wrangler deploy",
+  "dev": "react-router dev",
+  "preview": "react-router build && wrangler dev",
+  "start": "wrangler dev",
+  "typecheck": "wrangler types && react-router typegen && tsc",
+  "typegen": "wrangler types && react-router typegen"
+ },
+ "type": "module"
 }

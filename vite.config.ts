@@ -9,21 +9,21 @@ import tsconfigPaths from "vite-tsconfig-paths";
 const reactRouterPlugins = reactRouter();
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 const reactRouterPlugin = reactRouterPlugins.find(
-  (plugin) => plugin.name === "react-router",
+ (plugin) => plugin.name === "react-router",
 )!;
 reactRouterPlugin.configureServer = undefined;
 
 export default defineConfig({
-  plugins: [tailwindcss(), cloudflare(), reactRouterPlugins, tsconfigPaths()],
-  ssr: {
-    resolve: {
-      conditions: ["workerd", "worker", "browser"],
-    },
-  },
+ plugins: [tailwindcss(), cloudflare(), reactRouterPlugins, tsconfigPaths()],
+ ssr: {
   resolve: {
-    mainFields: ["browser", "module", "main"],
+   conditions: ["workerd", "worker", "browser"],
   },
-  build: {
-    minify: true,
-  },
+ },
+ resolve: {
+  mainFields: ["browser", "module", "main"],
+ },
+ build: {
+  minify: true,
+ },
 });
