@@ -12,4 +12,4 @@
 
 .wrangler
 *.json
-_wrangler.json
+wrangler.json
