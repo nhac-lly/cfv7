@@ -11,3 +11,5 @@
 /dist/
 
 .wrangler
+*.json
+_wrangler.json

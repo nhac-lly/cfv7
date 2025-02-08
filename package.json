@@ -43,7 +43,7 @@
   "cf-typegen": "wrangler types",
   "deploy": "react-router build && wrangler deploy",
   "dev": "react-router dev",
-  "preview": "react-router build && wrangler dev",
+  "preview": "react-router build && wrangler dev --remote",
   "start": "wrangler dev",
   "typecheck": "wrangler types && react-router typegen && tsc",
   "typegen": "wrangler types && react-router typegen"
