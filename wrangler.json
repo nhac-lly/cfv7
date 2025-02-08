@@ -1,0 +1,21 @@
+{
+ "$schema": "node_modules/wrangler/config-schema.json",
+ "name": "cfv7",
+ "compatibility_date": "2024-11-01",
+ "main": "./server.ts",
+ "assets": {
+  "directory": "./dist/client"
+ },
+ "observability": {
+  "enabled": true
+ },
+ "placement": { "mode": "smart" },
+ "vars": { "API_URL": "https://api.example.com" },
+ "d1_databases": [
+  {
+   "binding": "D1",
+   "database_name": "nld1",
+   "database_id": "fdd4685f-a138-4300-b8c7-301fd58a6a6a"
+  }
+ ]
+}
