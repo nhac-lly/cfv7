@@ -13,7 +13,8 @@ interface APIResponse {
 
 export default function ExampleComponent() {
  const [data, setData] = useState<DataItem[]>([]);
- const [isLoading, setIsLoading] = useState(true);
+ const [isStreaming, setIsStreaming] = useState(true);
+ const [initialLoading, setInitialLoading] = useState(true);
  const [error, setError] = useState<string | null>(null);
 
  useEffect(() => {
@@ -26,18 +27,18 @@ export default function ExampleComponent() {
        "Content-Type": "application/json",
       },
      },
-     // This callback will be called whenever we receive new chunks of data
+     // Handle streaming updates
      (partialResponse) => {
-      console.log(partialResponse);
-
       setData(partialResponse.data);
-
-      setIsLoading(false);
+      setInitialLoading(false);
      },
     );
+    // Set streaming to false when complete
+    setIsStreaming(false);
    } catch (err) {
     setError(err.message);
-    setIsLoading(false);
+    setInitialLoading(false);
+    setIsStreaming(false);
    }
   };
 
@@ -49,7 +50,7 @@ export default function ExampleComponent() {
  }, []);
 
  if (error) return <div>Error: {error}</div>;
- if (isLoading && data.length === 0) return <div>Loading...</div>;
+ if (initialLoading) return <div>Loading...</div>;
 
  return (
   <div className="p-4">
@@ -75,7 +76,7 @@ export default function ExampleComponent() {
      </div>
     ))}
    </div>
-   {isLoading && data.length > 0 && (
+   {isStreaming && (
     <div className="mt-4 text-gray-500">Loading more items...</div>
    )}
   </div>
