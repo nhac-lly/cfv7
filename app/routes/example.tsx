@@ -46,7 +46,7 @@ export default function ExampleComponent() {
   return () => {
    apiClient.destroy();
   };
- }, []);
+ }, [isLoading]);
 
  if (error) return <div>Error: {error}</div>;
  if (isLoading && data.length === 0) return <div>Loading...</div>;
