@@ -16,47 +16,49 @@ function* generateSampleData() {
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
- // Create a TransformStream to handle the streaming
- const stream = new TransformStream();
- const writer = stream.writable.getWriter();
- const encoder = new TextEncoder();
+ // Create a ReadableStream directly
+ const stream = new ReadableStream({
+  async start(controller) {
+   const encoder = new TextEncoder();
 
- // Start the streaming process
- (async () => {
-  try {
-   // Write the opening bracket for the JSON array
-   await writer.write(encoder.encode('{"data":['));
+   try {
+    // Write the opening bracket
+    controller.enqueue(encoder.encode('{"data":['));
 
-   let isFirst = true;
-   for (const item of generateSampleData()) {
-    // Add comma between items (except for the first item)
-    if (!isFirst) {
-     await writer.write(encoder.encode(","));
+    let isFirst = true;
+    for (const item of generateSampleData()) {
+     // Add comma between items
+     if (!isFirst) {
+      controller.enqueue(encoder.encode(","));
+     }
+     isFirst = false;
+
+     // Simulate delay
+     await new Promise((resolve) => setTimeout(resolve, 500));
+
+     // Write the item
+     controller.enqueue(encoder.encode(JSON.stringify(item)));
     }
-    isFirst = false;
 
-    // Simulate some delay between chunks
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    // Write the item
-    await writer.write(encoder.encode(JSON.stringify(item)));
+    // Write the closing brackets
+    controller.enqueue(encoder.encode("]}"));
+    controller.close();
+   } catch (error) {
+    controller.error(error);
    }
-
-   // Write the closing brackets
-   await writer.write(encoder.encode("]}"));
-   await writer.close();
-  } catch (error) {
-   console.error("Streaming error:", error);
-   writer.abort(error);
-  }
- })();
+  },
+ });
 
  // Return the response with appropriate headers
- return new Response(stream.readable, {
+ return new Response(stream, {
   headers: {
    "Content-Type": "application/json",
    "Cache-Control": "no-cache",
    "Transfer-Encoding": "chunked",
+   // Add CORS headers
+   "Access-Control-Allow-Origin": "*",
+   "Access-Control-Allow-Methods": "GET, OPTIONS",
+   "Access-Control-Allow-Headers": "Content-Type",
   },
  });
 };
