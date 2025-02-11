@@ -39,11 +39,11 @@
  },
  "private": true,
  "scripts": {
-  "build": "react-router build",
+  "build": "react-router build NODE_ENV=development",
   "cf-typegen": "wrangler types",
   "deploy": "react-router build && wrangler deploy",
   "dev": "react-router dev",
-  "preview": "react-router build && wrangler dev --remote",
+  "preview": "react-router build && wrangler dev --remote NODE_ENV=development",
   "start": "wrangler dev",
   "typecheck": "wrangler types && react-router typegen && tsc",
   "typegen": "wrangler types && react-router typegen"
