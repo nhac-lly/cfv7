@@ -13,6 +13,10 @@
  "dependencies": {
   "@react-router/fs-routes": "latest",
   "@react-router/serve": "latest",
+  "@tanstack/query-sync-storage-persister": "latest",
+  "@tanstack/react-query": "latest",
+  "@tanstack/react-query-devtools": "latest",
+  "@tanstack/react-query-persist-client": "latest",
   "isbot": "latest",
   "react": "latest",
   "react-dom": "latest",

@@ -26,14 +26,23 @@ export class StreamingAPIClient {
     switch (type) {
      case "STREAM_DATA":
       buffer += payload;
+      console.log(buffer);
       try {
        // Try to parse accumulated buffer as valid JSON
        if (buffer.startsWith('{"data":[') && buffer.includes("}")) {
-        const partial = buffer + "]}";
+        const cleanBuffer = buffer.slice(0, -1);
+        const partial = buffer.includes("]}")
+         ? buffer
+         : buffer.at(-1) === ","
+           ? `${buffer.slice(0, -1)}]}`
+           : `${buffer}]}`;
+        console.log(partial);
         const parsedData = JSON.parse(partial) as T;
+        console.log(parsedData);
         onChunk?.(parsedData);
        }
       } catch (error) {
+       console.log(error);
        // Ignore parsing errors for incomplete JSON
       }
       break;

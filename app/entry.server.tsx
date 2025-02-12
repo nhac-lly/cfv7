@@ -30,6 +30,7 @@ export default async function handleRequest(
 
  headers.set("Content-Type", "text/html; charset=utf-8");
  headers.set("Transfer-Encoding", "chunked");
+ headers.set("Cache-Control", "no-cache");
 
  return new Response(stream, { status, headers });
 }

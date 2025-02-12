@@ -34,7 +34,7 @@ export const loader: LoaderFunction = async ({ request }) => {
      isFirst = false;
 
      // Simulate delay
-     await new Promise((resolve) => setTimeout(resolve, 100));
+     await new Promise((resolve) => setTimeout(resolve, 1000));
 
      // Write the item
      controller.enqueue(encoder.encode(JSON.stringify(item)));

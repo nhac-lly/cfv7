@@ -7,6 +7,11 @@ import {
  isRouteErrorResponse,
 } from "react-router";
 
+import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { useState } from "react";
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
 
@@ -44,7 +49,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
- return <Outlet />;
+ const [queryClient] = useState(
+  () =>
+   new QueryClient({
+    defaultOptions: {
+     queries: {
+      staleTime: 1000 * 60 * 5,
+     },
+    },
+   }),
+ );
+
+ return (
+  <PersistQueryClientProvider
+   persistOptions={{
+    persister: createSyncStoragePersister({
+     storage: typeof window !== "undefined" ? window.localStorage : undefined,
+    }),
+   }}
+   client={queryClient}
+  >
+   <ReactQueryDevtools initialIsOpen={true} />
+   <Outlet />
+  </PersistQueryClientProvider>
+ );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
