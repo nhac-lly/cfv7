@@ -3,18 +3,7 @@
 @theme {
  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
- @keyframes wiggle {
-  0%,
-  100% {
-   transform: rotate(-3deg);
-  }
-  50% {
-   transform: rotate(3deg);
-  }
- }
-
- --animate-wiggle: wiggle 1s ease-in-out infinite;
+  --color-max: oklch(85% 0.3629 145.82);
 }
 
 html,
@@ -39,4 +28,18 @@ body {
 
 .animate-fade-in {
  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes wiggle {
+    0%,
+    100% {
+     transform: rotate(-3deg);
+    }
+    50% {
+     transform: rotate(3deg);
+    }
+}
+
+.animate-wiggle {
+ animation: wiggle 1s ease-in-out infinite;
 }

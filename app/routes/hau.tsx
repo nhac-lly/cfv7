@@ -11,7 +11,7 @@ export function meta(_props: Route.MetaArgs) {
 export default function Hau() {
  return (
   <>
-   <div className="h-screen w-screen flex items-center justify-center bg-conic/[in_hsl_longer_hue] from-red-600 to-red-600">
+   <div className="h-screen w-screen flex items-center justify-center bg-conic/[in_oklch_longer_hue] from-[var(--color-max)] to-[var(--color-max)]">
     <img className="animate-wiggle" src={hau} alt="Hau" />
    </div>
   </>
